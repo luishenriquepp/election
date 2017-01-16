@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Election.Models
 {
-    public class Votacao
+    public class Poll
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
