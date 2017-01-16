@@ -175,8 +175,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularApp\config.js" />
+    <Content Include="AngularApp\Controllers\restaurant.js" />
+    <Content Include="AngularApp\Factories\restaurant.js" />
     <Content Include="AngularApp\main.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Client\Html\index.html" />
+    <Content Include="Client\Html\Restaurant\create.html" />
+    <Content Include="Client\Html\Restaurant\edit.html" />
+    <Content Include="Client\Html\Restaurant\index.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
