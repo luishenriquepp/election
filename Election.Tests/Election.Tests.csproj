@@ -102,9 +102,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Election\Election.csproj">
+    <ProjectReference Include="..\Election\Election.WebApi.csproj">
       <Project>{65A7E5A6-3ADB-4E92-ADB0-FEC37724A5D8}</Project>
-      <Name>Election</Name>
+      <Name>Election.WebApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
