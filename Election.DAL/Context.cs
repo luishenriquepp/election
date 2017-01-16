@@ -5,8 +5,8 @@ namespace Election.DAL
 {
     public class Context : DbContext
     {
-        public IDbSet<Restaurant> Restaurant { get; set; }
-        public IDbSet<Poll> Election { get; set; }
-        public IDbSet<Vote> Vote { get; set; }
+        public DbSet<Restaurant> Restaurant { get; set; }
+        public DbSet<Poll> Election { get; set; }
+        public DbSet<Vote> Vote { get; set; }
     }
 }
