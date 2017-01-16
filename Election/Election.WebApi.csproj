@@ -214,7 +214,16 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Election.BLL\Election.BLL.csproj">
+      <Project>{768b978a-7bbe-47f3-98c8-8cf130324e6a}</Project>
+      <Name>Election.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Election.Models\Election.Models.csproj">
+      <Project>{58ced5f3-0088-4694-a02a-302641af140a}</Project>
+      <Name>Election.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
