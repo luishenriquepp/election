@@ -50,12 +50,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
+    <Compile Include="Migrations\201701171302506_Adding-navigation-property-into-vote.cs" />
+    <Compile Include="Migrations\201701171302506_Adding-navigation-property-into-vote.Designer.cs">
+      <DependentUpon>201701171302506_Adding-navigation-property-into-vote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701171440210_Removing-some-required-values-from-vote.cs" />
+    <Compile Include="Migrations\201701171440210_Removing-some-required-values-from-vote.Designer.cs">
+      <DependentUpon>201701171440210_Removing-some-required-values-from-vote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701171612482_Adding-navigation-property-into-poll.cs" />
+    <Compile Include="Migrations\201701171612482_Adding-navigation-property-into-poll.Designer.cs">
+      <DependentUpon>201701171612482_Adding-navigation-property-into-poll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\IPollRepository.cs" />
+    <Compile Include="Repository\IRestaurantRepository.cs" />
     <Compile Include="Migrations\201701161509280_First Migration.cs" />
     <Compile Include="Migrations\201701161509280_First Migration.Designer.cs">
       <DependentUpon>201701161509280_First Migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701161936524_Changing-poll-primary-key-to-int.cs" />
+    <Compile Include="Migrations\201701161936524_Changing-poll-primary-key-to-int.Designer.cs">
+      <DependentUpon>201701161936524_Changing-poll-primary-key-to-int.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701161957232_Add-column-winner-in-Poll-table.cs" />
+    <Compile Include="Migrations\201701161957232_Add-column-winner-in-Poll-table.Designer.cs">
+      <DependentUpon>201701161957232_Add-column-winner-in-Poll-table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IVoteRepository.cs" />
+    <Compile Include="Repository\PollRepository.cs" />
+    <Compile Include="Repository\RestaurantRepository.cs" />
+    <Compile Include="Repository\VoteRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -71,6 +97,24 @@
     <EmbeddedResource Include="Migrations\201701161509280_First Migration.resx">
       <DependentUpon>201701161509280_First Migration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701161936524_Changing-poll-primary-key-to-int.resx">
+      <DependentUpon>201701161936524_Changing-poll-primary-key-to-int.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701161957232_Add-column-winner-in-Poll-table.resx">
+      <DependentUpon>201701161957232_Add-column-winner-in-Poll-table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701171302506_Adding-navigation-property-into-vote.resx">
+      <DependentUpon>201701171302506_Adding-navigation-property-into-vote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701171440210_Removing-some-required-values-from-vote.resx">
+      <DependentUpon>201701171440210_Removing-some-required-values-from-vote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701171612482_Adding-navigation-property-into-poll.resx">
+      <DependentUpon>201701171612482_Adding-navigation-property-into-poll.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IRepository\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

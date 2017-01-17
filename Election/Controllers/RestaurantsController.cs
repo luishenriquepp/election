@@ -1,34 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
+﻿using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Election.DAL;
 using Election.Models;
+using Election.BLL.Services;
+using Election.DAL.Repository;
+using Election.DAL;
+using Election.BLL.IServices;
 
 namespace Election.Controllers
 {
     public class RestaurantsController : ApiController
     {
-        private Context db = new Context();
+        private IRestaurantService _service = new RestaurantServices(new RestaurantRepository(new Context()));
 
         // GET: api/Restaurants
         public IQueryable<Restaurant> GetRestaurants()
         {
-            return db.Restaurant;
+            return _service.GetAll();
         }
 
         // GET: api/Restaurants/5
         [ResponseType(typeof(Restaurant))]
-        public async Task<IHttpActionResult> GetRestaurant(int id)
+        public IHttpActionResult GetRestaurant(int id)
         {
-            Restaurant restaurant = await db.Restaurant.FindAsync(id);
+            Restaurant restaurant = _service.GetById(id);
             if (restaurant == null)
             {
                 return NotFound();
@@ -39,7 +36,7 @@ namespace Election.Controllers
 
         // PUT: api/Restaurants/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutRestaurant(int id, Restaurant restaurant)
+        public IHttpActionResult PutRestaurant(int id, Restaurant restaurant)
         {
             if (!ModelState.IsValid)
             {
@@ -51,22 +48,13 @@ namespace Election.Controllers
                 return BadRequest();
             }
 
-            db.Entry(restaurant).State = EntityState.Modified;
-
             try
             {
-                await db.SaveChangesAsync();
+                _service.Edit(restaurant);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RestaurantExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
                     throw;
-                }
             }
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -74,47 +62,25 @@ namespace Election.Controllers
 
         // POST: api/Restaurants
         [ResponseType(typeof(Restaurant))]
-        public async Task<IHttpActionResult> PostRestaurant(Restaurant restaurant)
+        public IHttpActionResult PostRestaurant(Restaurant restaurant)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Restaurant.Add(restaurant);
-            await db.SaveChangesAsync();
+            _service.Create(restaurant);
 
             return CreatedAtRoute("DefaultApi", new { id = restaurant.Id }, restaurant);
         }
 
         // DELETE: api/Restaurants/5
         [ResponseType(typeof(Restaurant))]
-        public async Task<IHttpActionResult> DeleteRestaurant(int id)
+        public IHttpActionResult DeleteRestaurant(int id)
         {
-            Restaurant restaurant = await db.Restaurant.FindAsync(id);
-            if (restaurant == null)
-            {
-                return NotFound();
-            }
-
-            db.Restaurant.Remove(restaurant);
-            await db.SaveChangesAsync();
-
-            return Ok(restaurant);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool RestaurantExists(int id)
-        {
-            return db.Restaurant.Count(e => e.Id == id) > 0;
+            _service.Remove(id);
+                
+            return Ok();
         }
     }
 }

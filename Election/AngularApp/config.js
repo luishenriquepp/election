@@ -2,13 +2,13 @@
     var config = function ($routeProvider) {
         $routeProvider
         .when("/",
-            { templateUrl: "/client/html/index.html" })
+            { templateUrl: "/client/html/index.html", controller: "pollController" })
         .when("/restaurantes",
             { templateUrl: "/client/html/restaurant/index.html", controller: "restaurantController" })
         .when("/restaurantes/create",
-           { templateUrl: "/cliente/html/restaurant/create.html", controller: "restaurantController" })
+           { templateUrl: "/client/html/restaurant/create.html", controller: "restaurantController" })
         .when("/restaurantes/edit/:id",
-           { templateUrl: "/cliente/html/restaurant/edit.html", controller: "restaurantController", })
+           { templateUrl: "/client/html/restaurant/edit.html", controller: "restaurantController", })
         .otherwise(
            { redirecTo: "/" });
     };

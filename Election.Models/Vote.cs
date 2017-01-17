@@ -9,7 +9,8 @@ namespace Election.Models
         [Required]
         public int RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
-        [Required]
         public string UserToken { get; set; }
+        public int PollId { get; set; }
+        public Poll Poll { get; set; }
     }
 }

@@ -130,7 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -166,17 +165,24 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PollsController.cs" />
     <Compile Include="Controllers\RestaurantsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VotesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ElectionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularApp\config.js" />
+    <Content Include="AngularApp\Controllers\poll.js" />
     <Content Include="AngularApp\Controllers\restaurant.js" />
+    <Content Include="AngularApp\Controllers\vote.js" />
+    <Content Include="AngularApp\Factories\poll.js" />
     <Content Include="AngularApp\Factories\restaurant.js" />
+    <Content Include="AngularApp\Factories\vote.js" />
     <Content Include="AngularApp\main.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Client\Html\index.html" />
@@ -239,6 +245,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Election.BLL\Election.BLL.csproj">
+      <Project>{768B978A-7BBE-47F3-98C8-8CF130324E6A}</Project>
+      <Name>Election.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Election.DAL\Election.DAL.csproj">
       <Project>{280fd081-58d5-402a-a73b-2ba598f90082}</Project>
       <Name>Election.DAL</Name>
