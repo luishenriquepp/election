@@ -167,7 +167,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PollsController.cs" />
     <Compile Include="Controllers\RestaurantsController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VotesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
