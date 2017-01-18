@@ -1,16 +1,16 @@
 ﻿<div ng-controller="pollController">
     <div class="container" ng-init="load()">
-        <h1>Escolha aonde você quer almoçar hoje!</h1>
-        <h3>Restaurantes disponíveis</h3>
+        <h1>{{ title }}</h1>
+        <h3>{{ subtitle }}</h3>
         <ul class="list-group">
             <li ng-repeat="rest in available" class="list-group-item" ng-click="click(rest.Restaurant)" ng-class="{ active: selected == rest.Restaurant.Id }">
-                <span class="badge">{{ rest.Votes }}</span>
+                <span class="badge" style="font-size: 18px">{{ rest.Votes }}</span>
                 {{ rest.Restaurant.Name }}
             </li>
         </ul>
         <div ng-if="enabled">
             <div style="text-align: center">
-                <button class="btn btn-primary" ng-disabled="disabled" ng-click="votar()">{{ title }}</button>
+                <button class="btn btn-primary" ng-disabled="disabled" ng-click="votar()">{{ btnValue }}</button>
             </div>
         </div>
     </div>
