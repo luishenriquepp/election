@@ -1,8 +1,5 @@
 ﻿using Election.BLL.Utils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Election.Models
 {
@@ -10,5 +7,6 @@ namespace Election.Models
     {
         public List<VoteRaw> ElectionVotes { get; set; }
         public bool Voted { get; set; }
+        public int WinnerId { get; set; }
     }
 }

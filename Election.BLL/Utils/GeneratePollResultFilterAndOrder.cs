@@ -6,25 +6,25 @@ namespace Election.BLL.Utils
 {
     public class GeneratePollResultFilterAndOrder
     {
-        private List<Restaurant> Restaurants { get; set; }
-        private Poll Poll { get; set; }
+        private List<Restaurant> Availables { get; set; }
+        private Poll TodayPoll { get; set; }
 
-        public GeneratePollResultFilterAndOrder(List<Restaurant> restaurants, Poll poll)
+        public GeneratePollResultFilterAndOrder(List<Restaurant> availables, Poll today)
         {
-            Restaurants = restaurants;
-            Poll = poll;
+            Availables = availables;
+            TodayPoll = today;
         }
 
         public List<VoteRaw> Get()
         {
             List<VoteRaw> raw = new List<VoteRaw>();
-            foreach (var rest in Restaurants)
+            foreach (var rest in Availables)
             {
                 raw.Add(new VoteRaw { Restaurant = rest, Votes = 0 });
             }
-            if(Poll != null)
+            if(TodayPoll != null)
             {
-                foreach (var vote in Poll.Votes)
+                foreach (var vote in TodayPoll.Votes)
                 {
                     var selectedRaw = raw.First(r => r.Restaurant.Id == vote.RestaurantId);
                     selectedRaw.Votes++;

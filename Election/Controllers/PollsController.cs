@@ -31,6 +31,11 @@ namespace Election.Controllers
             GeneratePollResultFilterAndOrder createVM = new GeneratePollResultFilterAndOrder(availableRestaurants.ToList(), poll);
             ElectionViewModel vm = new ElectionViewModel();
             vm.ElectionVotes = createVM.Get();
+
+            if(poll != null && poll.WinnerId != null)
+            {
+                vm.WinnerId = (int)poll.WinnerId;
+            }
             
             return Ok(vm);
         }
