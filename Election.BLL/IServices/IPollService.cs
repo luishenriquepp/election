@@ -8,7 +8,7 @@ namespace Election.BLL.IServices
     {
         IQueryable<Restaurant> GetAvailableRestaurants(DateTime time);
         IQueryable<Poll> GetAll();
-        Poll GetByDayOfWeak(DateTime date);
+        Poll GetByWeekOfYear(DateTime date);
         void Create(Poll poll);
         void SelectWinner(DateTime date);
     }

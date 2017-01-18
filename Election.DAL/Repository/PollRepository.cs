@@ -1,5 +1,6 @@
 ﻿using Election.Models;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -20,7 +21,7 @@ namespace Election.DAL.Repository
             return Context.Election;
         }
 
-        public IQueryable<Poll> Get(Expression<Func<Poll,  bool>> predicate)
+        public IEnumerable<Poll> Get(Func<Poll, bool> predicate)
         {
             return Context.Election.Where(predicate);
         }

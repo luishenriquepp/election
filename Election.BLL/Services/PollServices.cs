@@ -1,8 +1,10 @@
-﻿using Election.BLL.IServices;
+﻿using Election.BLL.Expressions;
+using Election.BLL.IServices;
 using Election.BLL.Utils;
 using Election.DAL.Repository;
 using Election.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Election.BLL.Services
@@ -20,21 +22,21 @@ namespace Election.BLL.Services
 
         public IQueryable<Restaurant> GetAvailableRestaurants(DateTime date)
         {
-            var create = new CreateElectionDateOfWeek(date);
-            var weekKey = create.Get();
-            var polls =  _pollrepository.Get(p => p.WeekOfYear == weekKey && p.Winner != null && p.DayOfWeek!= (int)date.DayOfWeek);
+            PollServiceExpressions exp = new PollServiceExpressions();
+            IEnumerable<Poll> polls =  _pollrepository.Get(exp.GetSameWeekPollsExceptFromToday(DateTime.Now));
 
-            IQueryable<Restaurant> winners = polls.Select(p => p.Winner);
+            IEnumerable<Restaurant> winners = polls.Select(p => p.Winner);
             IQueryable<Restaurant> all = _restaurantRepository.GetAll();
 
             return all.Except(winners);
         }
 
-        public Poll GetByDayOfWeak(DateTime date)
+        public Poll GetByWeekOfYear(DateTime date)
         {
-            var create = new CreateElectionDateOfWeek(date);
+            PollServiceExpressions exp = new PollServiceExpressions();
+            var create = new CreateWeekOfYearElection(date);
             var weekKey = create.Get();
-            var poll = _pollrepository.Get(p => p.WeekOfYear == weekKey && p.DayOfWeek == (int)date.DayOfWeek).FirstOrDefault();
+            var poll = _pollrepository.Get(exp.GetPollByWeekOfYear(date)).FirstOrDefault();
 
             return poll;
         }

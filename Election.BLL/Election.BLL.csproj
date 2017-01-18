@@ -40,15 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Expressions\PollServiceExpressions.cs" />
     <Compile Include="IServices\IPollService.cs" />
     <Compile Include="IServices\IRestaurantService.cs" />
     <Compile Include="IServices\IVoteService.cs" />
     <Compile Include="Services\PollServices.cs" />
     <Compile Include="Services\RestaurantServices.cs" />
     <Compile Include="Services\VoteServices.cs" />
-    <Compile Include="Utils\CreateElectionDateOfWeek.cs" />
+    <Compile Include="Utils\CreateWeekOfYearElection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\CreateElectionViewModel.cs" />
+    <Compile Include="Utils\GeneratePollResultFilterAndOrder.cs" />
     <Compile Include="Utils\DefineWinner.cs" />
   </ItemGroup>
   <ItemGroup>

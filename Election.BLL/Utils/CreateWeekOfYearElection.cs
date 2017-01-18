@@ -3,11 +3,11 @@ using System.Globalization;
 
 namespace Election.BLL
 {
-    public class CreateElectionDateOfWeek
+    public class CreateWeekOfYearElection
     {
         private DateTime Today { get; set; }
 
-        public CreateElectionDateOfWeek(DateTime today)
+        public CreateWeekOfYearElection(DateTime today)
         {
             Today = today;
         }

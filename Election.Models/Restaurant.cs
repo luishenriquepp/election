@@ -10,5 +10,22 @@ namespace Election.Models
         public string Name { get; set; }
         public string Adress { get; set; }
         public string Neighborhood { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var item = obj as Restaurant;
+
+            if (item == null)
+            {
+                return false;
+            }
+
+            return Id.Equals(item.Id);
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
     }
 }

@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace Election.BLL.Utils
 {
-    public class CreatePollViewModel
+    public class GeneratePollResultFilterAndOrder
     {
         private List<Restaurant> Restaurants { get; set; }
         private Poll Poll { get; set; }
 
-        public CreatePollViewModel(List<Restaurant> restaurants, Poll poll)
+        public GeneratePollResultFilterAndOrder(List<Restaurant> restaurants, Poll poll)
         {
             Restaurants = restaurants;
             Poll = poll;

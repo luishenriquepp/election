@@ -19,9 +19,9 @@ namespace Election.BLL.Services
 
         public void Create(Vote vote)
         {
-            var create = new CreateElectionDateOfWeek(DateTime.Now);
+            var create = new CreateWeekOfYearElection(DateTime.Now);
             var weekKey = create.Get();
-            var poll = _pollService.GetByDayOfWeak(DateTime.Now);
+            var poll = _pollService.GetByWeekOfYear(DateTime.Now);
             if(poll == null)
             {
                 poll = new Poll { WeekOfYear = weekKey, DayOfWeek = (int)DateTime.Now.DayOfWeek };

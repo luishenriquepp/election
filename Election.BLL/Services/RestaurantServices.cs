@@ -7,9 +7,9 @@ namespace Election.BLL.Services
 {
     public class RestaurantServices : IRestaurantService
     {
-        private RestaurantRepository _repository;
+        private IRestaurantRepository _repository;
 
-        public RestaurantServices(RestaurantRepository repository)
+        public RestaurantServices(IRestaurantRepository repository)
         {
             _repository = repository;
         }
