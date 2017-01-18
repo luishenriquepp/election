@@ -1,3 +1,3 @@
 ﻿(function (app) {
-    var app = angular.module("electionApp", ["ngRoute"]);
+    var app = angular.module("electionApp", ["ngRoute", "LocalStorageModule"]);
 }());

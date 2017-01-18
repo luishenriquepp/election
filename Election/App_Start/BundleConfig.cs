@@ -19,18 +19,21 @@ namespace Election
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/angular.js",
                         "~/Scripts/angular-route.js",
+                        "~/Scripts/angular-local-storage.js",
                         "~/AngularApp/main.js",
                         "~/AngularApp/config.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/factories").Include(
                     "~/AngularApp/Factories/restaurant.js",
                     "~/AngularApp/Factories/poll.js",
-                    "~/AngularApp/Factories/vote.js"));
+                    "~/AngularApp/Factories/vote.js",
+                    "~/AngularApp/Factories/login.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/controllers").Include(
                     "~/AngularApp/Controllers/restaurant.js",
                     "~/AngularApp/Controllers/poll.js",
-                    "~/AngularApp/Controllers/vote.js"));
+                    "~/AngularApp/Controllers/vote.js",
+                    "~/AngularApp/Controllers/login.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",

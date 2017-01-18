@@ -9,9 +9,9 @@ namespace Election.DAL.Repository
 {
     public class PollRepository : IPollRepository
     {
-        private Context Context;
+        private ApplicationDbContext Context;
 
-        public PollRepository(Context context)
+        public PollRepository(ApplicationDbContext context)
         {
             this.Context = context;
         }

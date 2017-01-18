@@ -8,9 +8,9 @@ namespace Election.DAL.Repository
 {
     public class RestaurantRepository : IRestaurantRepository
     {
-        private Context Context;
+        private ApplicationDbContext Context;
 
-        public RestaurantRepository(Context context)
+        public RestaurantRepository(ApplicationDbContext context)
         {
             this.Context = context;
         }

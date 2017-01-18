@@ -7,9 +7,9 @@ namespace Election.DAL.Repository
 {
     public class VoteRepository : IVoteRepository
     {
-        private Context Context;
+        private ApplicationDbContext Context;
 
-        public VoteRepository(Context context)
+        public VoteRepository(ApplicationDbContext context)
         {
             this.Context = context;
         }
