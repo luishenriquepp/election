@@ -4,16 +4,18 @@ using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Election.Models;
-using Election.BLL.Services;
-using Election.DAL.Repository;
-using Election.DAL;
 using Election.BLL.IServices;
 
 namespace Election.Controllers
 {
     public class RestaurantsController : ApiController
     {
-        private IRestaurantService _service = new RestaurantServices(new RestaurantRepository(new Context()));
+        private IRestaurantService _service;
+
+        public RestaurantsController(IRestaurantService service)
+        {
+            _service = service;
+        }
 
         // GET: api/Restaurants
         public IQueryable<Restaurant> GetRestaurants()
