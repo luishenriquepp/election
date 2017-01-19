@@ -23,7 +23,7 @@ namespace Election.Controllers
         [ResponseType(typeof(GeneratePollResultFilterAndOrder))]
         public IHttpActionResult GetPoll()
         {
-            //_service.SelectWinner(DateTime.Now);
+            _service.SelectWinner(DateTime.Now);
 
             CreateWeekOfYearElection create = new CreateWeekOfYearElection(DateTime.Now);
             var key = create.Get();

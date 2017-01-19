@@ -53,7 +53,7 @@
         }
         var canVote = function () {
             var date = new Date();
-            if (date.getHours() >= 7 && date.getHours() < 24)
+            if (date.getHours() >= 7 && date.getHours() < 12)
                 return true;
         }
         var showButton = function (hasVoted, winnerId, canvote) {
