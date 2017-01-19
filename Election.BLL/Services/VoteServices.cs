@@ -27,7 +27,7 @@ namespace Election.BLL.Services
                 poll = new Poll { WeekOfYear = weekKey, DayOfWeek = (int)DateTime.Now.DayOfWeek };
                 _pollService.Create(poll);
             }
-            vote.Poll = poll;
+            vote.PollId = poll.Id;
             _voteRepository.Create(vote);
         }
 

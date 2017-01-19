@@ -25,6 +25,13 @@
             }
             return $http(request);
         }
+        fac.Logout = function () {
+            var request = {
+                method: 'post',
+                url: '/api/Account/Logout'
+            }
+            return $http(request);
+        }
         return fac;
     }]);
 }(angular.module('electionApp')))

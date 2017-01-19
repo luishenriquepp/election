@@ -20,19 +20,29 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a title="facebook" ng-click="authenticateExternalProvider('Facebook')">Facebook</a></li>
+                    <li><a href="/#/restaurantes">Restaurantes</a></li>
                 </ul>
-                <ul class="nav navbar-nav">
-                    <li><a title="google" ng-click="authenticateExternalProvider('Google')">Google</a></li>
-                </ul>
-            </div>
+                <div class="text-right">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a title="facebook" ng-click="authenticateExternalProvider('Facebook')">Facebook</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a title="google" ng-click="authenticateExternalProvider('Google')">Google</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a title="Logout" ng-click="logout()">Sair</a></li>
+                    </ul>
+                </div>
+</div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <P>Applicação desenvolvida por Luís Henrique Pacheco Paim</p> 
+            <p>luishenriquepp@live.com - (51) 99163-3250</p>
+            <p><a href="https://www.linkedin.com/in/luishenriquepp">Linkedin</a> <a href="https://github.com/luishenriquepp">Github</a></p>
         </footer>
     </div>
 

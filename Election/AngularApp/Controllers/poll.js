@@ -8,6 +8,7 @@
         $scope.selected = '';
         $scope.vote = { 'Id': 0, 'RestaurantId': 0, 'UserToken': 0, 'Poll_Id': 0 };
         $scope.available = [];
+        $scope.message = false;
 
         $scope.load = function () {
             pollFactory.init()
@@ -22,6 +23,9 @@
                             return;
                         }
                     })
+                } else if (data.Voted) {
+                    $scope.title = 'Aguarde o andamento da votação.';
+                    $scope.subtitle = '';
                 }
             });
         };
@@ -32,19 +36,24 @@
             $scope.vote.RestaurantId = restaurant.Id;
         }
         $scope.votar = function() {
+            $scope.message = false;
             voteFactory.create($scope.vote)
-            .success(function (data) {
+            .then(function (data) {
                 $scope.enabled = false;
                 $scope.available.forEach(function (el) {
                     if (el.Restaurant.Id == $scope.vote.RestaurantId) {
                         el.Votes++;
                     }
                 })
+            }, function (err) {
+                console.log(err);
+                $scope.message = true;
+                $scope.response = err.data.ExceptionMessage;
             });
         }
         var canVote = function () {
             var date = new Date();
-            if (date.getHours() >= 7 && date.getHours() < 13)
+            if (date.getHours() >= 7 && date.getHours() < 24)
                 return true;
         }
         var showButton = function (hasVoted, winnerId, canvote) {

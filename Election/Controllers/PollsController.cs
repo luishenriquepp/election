@@ -6,6 +6,7 @@ using Election.Models;
 using Election.BLL.Utils;
 using Election.BLL;
 using Election.BLL.IServices;
+using Microsoft.AspNet.Identity;
 
 namespace Election.Controllers
 {
@@ -22,7 +23,7 @@ namespace Election.Controllers
         [ResponseType(typeof(GeneratePollResultFilterAndOrder))]
         public IHttpActionResult GetPoll()
         {
-            _service.SelectWinner(DateTime.Now);
+            //_service.SelectWinner(DateTime.Now);
 
             CreateWeekOfYearElection create = new CreateWeekOfYearElection(DateTime.Now);
             var key = create.Get();
@@ -36,6 +37,9 @@ namespace Election.Controllers
             {
                 vm.WinnerId = (int)poll.WinnerId;
             }
+
+            var voted = poll.Votes.Where(v => v.UserToken.Equals(User.Identity.GetUserId()));
+            vm.Voted = voted.Any();
             
             return Ok(vm);
         }

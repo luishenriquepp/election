@@ -1,14 +1,9 @@
 ﻿using Election.BLL.IServices;
-using Election.BLL.Services;
-using Election.DAL;
-using Election.DAL.Repository;
 using Election.Models;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
+using System;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Microsoft.AspNet.Identity;
 
 namespace Election.Controllers
 {
@@ -27,6 +22,12 @@ namespace Election.Controllers
         [ResponseType(typeof(Vote))]
         public IHttpActionResult PostVote(Vote vote)
         {
+            if(!User.Identity.IsAuthenticated)
+            {
+                return InternalServerError(new Exception("Usuário não autenticado."));
+            }
+            vote.UserToken = User.Identity.GetUserId();
+
             _service.Create(vote);
             vote.Poll = null;
             return CreatedAtRoute("DefaultApi", new { id = vote.Id }, vote);

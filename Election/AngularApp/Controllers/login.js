@@ -5,20 +5,26 @@
             window.location.href = externalProviderUrl;
         }
 
+        $scope.logout = function () {
+            loginFactory.Logout()
+                .then(function () {
+                    alert('logout');
+                });
+        }
+
         $scope.CheckLocationHash = function () {
             if (location.hash && location.hash.length > 2) {
-                console.log(location.hash);
                 if (location.hash.split('access_token=')) {
                     $scope.accessToken = location.hash.split('access_token=')[1].split('&')[0];
                     if ($scope.accessToken) {
                         loginFactory.CheckRegistration($scope.accessToken).then(function (response) {
                             if (response.data.HasRegistered) {
                                 localStorageService.set('authorizationData', { token: $scope.accessToken, userName: response.userName });
-                                location.href = '/html/successpage.html';
+                                location.href = '/';
                             } else {
                                 loginFactory.SignupExternal($scope.accessToken).then(function (response) {
                                     localStorageService.set('authorizationData', { token: $scope.accessToken, userName: response.userName });
-                                    location.href = '/html/successpage.html';
+                                    location.href = '/';
                                 }, function(err) {
                                     alert(err.data.Message);
                                 })

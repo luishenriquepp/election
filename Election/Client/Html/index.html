@@ -11,6 +11,9 @@
         <div ng-if="enabled">
             <div style="text-align: center">
                 <button class="btn btn-primary" ng-disabled="disabled" ng-click="votar()">{{ btnValue }}</button>
+            </div><br />
+            <div class="alert alert-warning" ng-if="message">
+                {{ response }}
             </div>
         </div>
     </div>
