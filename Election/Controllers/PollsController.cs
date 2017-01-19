@@ -33,13 +33,15 @@ namespace Election.Controllers
             ElectionViewModel vm = new ElectionViewModel();
             vm.ElectionVotes = createVM.Get();
 
-            if(poll != null && poll.WinnerId != null)
+            if(poll != null)
             {
-                vm.WinnerId = (int)poll.WinnerId;
+                var voted = poll.Votes.Where(v => v.UserToken.Equals(User.Identity.GetUserId()));
+                vm.Voted = voted.Any();
+                if(poll.WinnerId != null)
+                {
+                    vm.WinnerId = (int)poll.WinnerId;
+                }
             }
-
-            var voted = poll.Votes.Where(v => v.UserToken.Equals(User.Identity.GetUserId()));
-            vm.Voted = voted.Any();
             
             return Ok(vm);
         }

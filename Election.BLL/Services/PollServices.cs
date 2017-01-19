@@ -56,11 +56,14 @@ namespace Election.BLL.Services
             if(!(date.Hour >= 7 && date.Hour < 12))
             {
                 var pollsWithoutWinner = _pollrepository.Get(p => p.Winner == null);
-                foreach(var poll in pollsWithoutWinner.ToList())
+                if(pollsWithoutWinner.Any())
                 {
-                    DefineWinner define = new DefineWinner(poll);
-                    poll.WinnerId = define.Winner.Id;
-                    _pollrepository.Edit(poll);
+                    foreach (var poll in pollsWithoutWinner.ToList())
+                    {
+                        DefineWinner define = new DefineWinner(poll);
+                        poll.WinnerId = define.Winner.Id;
+                        _pollrepository.Edit(poll);
+                    }
                 }
             }
         }
