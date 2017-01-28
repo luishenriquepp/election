@@ -11,6 +11,7 @@
             loginFactory.Logout()
                 .then(function () {
                     localStorageService.cookie.clearAll();
+                    localStorageService.clearAll();
                     $scope.auth = false;
                 });
         }
@@ -25,7 +26,7 @@
                                 console.log(response);
                                 localStorageService.set('authorizationData', { token: $scope.accessToken, userName: response.data.Email });
                                 $scope.GetAuth();
-                                window.location = '/';
+                                window.location = '#/';
                             } else {
                                 loginFactory.SignupExternal($scope.accessToken).then(function (response) {
                                     console.log(response);
