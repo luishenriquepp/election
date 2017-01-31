@@ -17,7 +17,7 @@
         }
 
         $scope.CheckLocationHash = function () {
-            if (location.hash && location.hash.length > 2) {
+            if (location.hash && location.hash.length > 15) {
                 if (location.hash.split('access_token=')) {
                     $scope.accessToken = location.hash.split('access_token=')[1].split('&')[0];
                     if ($scope.accessToken) {
