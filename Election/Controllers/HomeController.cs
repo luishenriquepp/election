@@ -10,7 +10,7 @@ namespace Election.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Election - Escolha seu restaurante";
 
             return View();
         }
