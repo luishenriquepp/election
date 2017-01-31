@@ -3,10 +3,13 @@
         <div class="panel panel-default">
             <div class="panel-heading"><h4>Modificar o restaurante</h4></div>
             <div class="panel-body">
-                <form>
+                <form name="form" ng-submit="edit()" novalidate>
                     <div class="form-group">
                         <label>Nome:</label>
-                        <input type="text" ng-model="restaurant.Name" class="form-control" />
+                        <input type="text" ng-model="restaurant.Name" class="form-control" name="fName" required=""/>
+                        <div ng-show="form.$submitted || form.fName.$touched">
+                            <div class="text-danger" ng-show="form.fName.$error.required">O restaurante precisa ter um nome.</div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Endereço:</label>
@@ -16,11 +19,11 @@
                         <label>Bairro:</label>
                         <input type="text" ng-model="restaurant.Neighborhood" class="form-control" />
                     </div>
-                    <button class="btn btn-primary" ng-click="edit()">Modificar</button>
+                    <button class="btn btn-primary">Modificar</button>
                 </form>
             </div>
             <div class="panel-footer">
-
+                <div class="text-success">{{ response }}</div>
             </div>
         </div>
 

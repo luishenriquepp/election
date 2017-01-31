@@ -1,20 +1,23 @@
 ﻿(function (app) {
     app.controller('restaurantController', ['$scope', '$routeParams', 'restaurantFactory', function ($scope, $routeParams, restaurantFactory) {
         var id = $routeParams.id;
+        $scope.form = {};
         if (id) {
             restaurantFactory.getRestaurantById(id)
             .success(function (data) {
                 $scope.restaurant = data;
             });
         }
-
         $scope.restaurant = {};
         $scope.restaurants = [];
         $scope.save = function () {
-            restaurantFactory.create($scope.restaurant)
+            if ($scope.form.$valid) {
+                restaurantFactory.create($scope.restaurant)
                 .success(function (data) {
                     console.log(data);
+                    $scope.response = "Restaurante inserido com sucesso";
                 });
+            }
         };
         $scope.load = function () {
             restaurantFactory.getRestaurants()
@@ -23,10 +26,13 @@
                 });
         };
         $scope.edit = function () {
-            restaurantFactory.edit($scope.restaurant)
-                .success(function (data) {
-                    console.log(data);
-                });
+            if ($scope.form.$valid) {
+                restaurantFactory.edit($scope.restaurant)
+                    .success(function (data) {
+                        console.log(data);
+                        $scope.response = "Restaurante alterado com sucesso";
+                    });
+            }
         };
         $scope.remove = function (restaurant) {
             console.log(restaurant);
