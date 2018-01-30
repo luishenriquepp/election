@@ -14,9 +14,14 @@ namespace Election.BLL.Services
             _repository = repository;
         }
 
-        public void Create(Restaurant restaurant)
+        public Restaurant Create(Restaurant restaurant)
         {
-            _repository.Create(restaurant);
+            if (!IsDuplicated(restaurant))
+            {
+                return null;
+            }
+
+            return _repository.Create(restaurant);
         }
 
         public IQueryable<Restaurant> GetAll()
@@ -29,14 +34,26 @@ namespace Election.BLL.Services
             _repository.Delete(id);
         }
 
-        public void Edit(Restaurant restaurant)
+        public Restaurant Edit(Restaurant restaurant)
         {
-            _repository.Edit(restaurant);
+            if (!IsDuplicated(restaurant))
+            {
+                return null;
+            }
+
+            return _repository.Edit(restaurant);
         }
 
         public Restaurant GetById(int id)
         {
             return _repository.GetById(id);
+        }
+
+        private bool IsDuplicated(Restaurant restaurant)
+        {
+            var existing = _repository.Get(r => r.Name.ToLower() == restaurant.Name.ToLower()).FirstOrDefault();
+
+            return !(existing != null && restaurant.Id != existing.Id);
         }
     }
 }

@@ -6,7 +6,7 @@
                 <form name="form" ng-submit="save()" novalidate>
                     <div class="form-group">
                         <label>Nome:</label>
-                        <input type="text" ng-model="restaurant.Name" class="form-control" name="fName" required=""/>
+                        <input type="text" ng-model="restaurant.Name" class="form-control" name="fName" required="" />
                         <div ng-show="form.$submitted || form.fName.$touched">
                             <div class="text-danger" ng-show="form.fName.$error.required">O restaurante precisa ter um nome.</div>
                         </div>
@@ -23,7 +23,12 @@
                 </form>
             </div>
             <div class="panel-footer">
-                <div class="text-success">{{ response }}</div>
+                <div class="text-warning">
+                    {{ response }}
+                </div>
+                <div class="text-danger">
+                    {{ fail }}
+                </div>
             </div>
         </div>
 

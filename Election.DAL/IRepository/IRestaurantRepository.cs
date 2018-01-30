@@ -9,9 +9,9 @@ namespace Election.DAL.Repository
     {
         IQueryable<Restaurant> GetAll();
         IQueryable<Restaurant> Get(Expression<Func<Restaurant, bool>> predicate);
-        void Create(Restaurant restaurant);
+        Restaurant Create(Restaurant restaurant);
         void Delete(int id);
-        void Edit(Restaurant restaurant);
+        Restaurant Edit(Restaurant restaurant);
         Restaurant GetById(int id);
     }
 }

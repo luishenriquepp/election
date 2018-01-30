@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Election.Models;
 using Election.BLL.IServices;
+using System;
 
 namespace Election.Controllers
 {
@@ -52,11 +53,14 @@ namespace Election.Controllers
 
             try
             {
-                _service.Edit(restaurant);
+                var added = _service.Edit(restaurant);
+
+                if (added == null)
+                    return InternalServerError(new Exception("Duplicated restaurant."));
             }
             catch (DbUpdateConcurrencyException)
             {
-                    throw;
+                 throw;
             }
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -67,11 +71,12 @@ namespace Election.Controllers
         public IHttpActionResult PostRestaurant(Restaurant restaurant)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
-            _service.Create(restaurant);
+            var added = _service.Create(restaurant);
+
+            if (added == null)
+                return InternalServerError(new Exception("Duplicated restaurant."));
 
             return CreatedAtRoute("DefaultApi", new { id = restaurant.Id }, restaurant);
         }

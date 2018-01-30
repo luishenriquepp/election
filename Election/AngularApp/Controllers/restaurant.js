@@ -11,12 +11,16 @@
         $scope.restaurant = {};
         $scope.restaurants = [];
         $scope.save = function () {
+            $scope.response = null;
+            $scope.fail = null;
+
             if ($scope.form.$valid) {
                 restaurantFactory.create($scope.restaurant)
-                .success(function (data) {
-                    console.log(data);
-                    $scope.response = "Restaurante inserido com sucesso";
-                });
+                .then(function (data) {
+                    $scope.response = "Restaurante inserido com sucesso.";
+                }, (error) => {
+                    $scope.fail = "Restaurante com nome duplicado.";
+                });;
             }
         };
         $scope.load = function () {
@@ -26,16 +30,19 @@
                 });
         };
         $scope.edit = function () {
+            $scope.response = null;
+            $scope.fail = null;
+
             if ($scope.form.$valid) {
                 restaurantFactory.edit($scope.restaurant)
-                    .success(function (data) {
-                        console.log(data);
-                        $scope.response = "Restaurante alterado com sucesso";
-                    });
+                    .then(function (data) {
+                        $scope.response = "Restaurante alterado com sucesso.";
+                    }, (error) => {
+                        $scope.fail = "Restaurante com nome duplicado.";
+                    });;
             }
         };
         $scope.remove = function (restaurant) {
-            console.log(restaurant);
             restaurantFactory.remove(restaurant)
                 .success(function (data) {
                     console.log(data);
